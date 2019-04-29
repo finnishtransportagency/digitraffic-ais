@@ -5,7 +5,7 @@
 
     <groupId>fi.fta.digitraffic</groupId>
     <artifactId>marine</artifactId>
-    <version>2.7.0</version>
+    <version>test.test</version>
     <packaging>jar</packaging>
 
     <name>dt-marine</name>
