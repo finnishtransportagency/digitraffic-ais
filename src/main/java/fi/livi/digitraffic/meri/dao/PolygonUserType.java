@@ -61,11 +61,11 @@ public class PolygonUserType implements UserType {
                               final String[] names,
                               final SharedSessionContractImplementor session,
                               final Object owner) throws HibernateException, SQLException {
-        Object value = rs.getObject(names[0]);
+        final Object value = rs.getObject(names[0]);
         if (value == null) {
             return null;
         }
-        List<Point> points = Arrays.stream(((PGpolygon) value).points).map(p -> new Point(p.x, p.y)).collect(Collectors.toList());
+        final List<Point> points = Arrays.stream(((PGpolygon) value).points).map(p -> new Point(p.x, p.y)).collect(Collectors.toList());
         return new Polygon(points);
     }
     @Override
@@ -76,7 +76,7 @@ public class PolygonUserType implements UserType {
         if (value == null) {
             st.setNull(index, Types.OTHER);
         } else {
-            Polygon polygon = (Polygon) value;
+            final Polygon polygon = (Polygon) value;
             st.setObject(index, new PGpolygon(polygon.points.stream().map(p -> new PGpoint(p.longitude, p.latitude)).toArray(PGpoint[]::new)));
         }
     }
