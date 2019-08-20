@@ -31,17 +31,17 @@ public class PolygonUserType implements UserType {
     }
 
     @Override
-    public final Object replace(Object original, Object target, Object owner) throws HibernateException {
+    public final Object replace(final Object original, final Object target, final Object owner) throws HibernateException {
         return original;
     }
 
     @Override
-    public final Object deepCopy(Object value) throws HibernateException {
+    public final Object deepCopy(final Object value) throws HibernateException {
         return value;
     }
 
     @Override
-    public final boolean equals(Object x, Object y) throws HibernateException {
+    public final boolean equals(final Object x, final Object y) throws HibernateException {
         if (x == y) {
             return true;
         }
@@ -52,7 +52,7 @@ public class PolygonUserType implements UserType {
     }
 
     @Override
-    public final int hashCode(Object x) throws HibernateException {
+    public final int hashCode(final Object x) throws HibernateException {
         return (x != null) ? x.hashCode() : 0;
     }
 
@@ -69,10 +69,10 @@ public class PolygonUserType implements UserType {
         return new Polygon(points);
     }
     @Override
-    public final void nullSafeSet(PreparedStatement st,
-                                  Object value,
-                                  int index,
-                                  SharedSessionContractImplementor session) throws HibernateException, SQLException {
+    public final void nullSafeSet(final PreparedStatement st,
+                                  final Object value,
+                                  final int index,
+                                  final SharedSessionContractImplementor session) throws HibernateException, SQLException {
         if (value == null) {
             st.setNull(index, Types.OTHER);
         } else {
@@ -87,12 +87,12 @@ public class PolygonUserType implements UserType {
     }
 
     @Override
-    public final Object assemble(Serializable cached, Object owner) throws HibernateException {
+    public final Object assemble(final Serializable cached, final Object owner) throws HibernateException {
         return cached;
     }
 
     @Override
-    public final Serializable disassemble(Object value) throws HibernateException {
+    public final Serializable disassemble(final Object value) throws HibernateException {
         return (Serializable) value;
     }
 }
