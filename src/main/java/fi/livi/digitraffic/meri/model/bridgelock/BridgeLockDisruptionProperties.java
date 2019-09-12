@@ -1,19 +1,19 @@
-package fi.livi.digitraffic.meri.model.bridgesluice;
+package fi.livi.digitraffic.meri.model.bridgelock;
 
 import java.time.ZonedDateTime;
 
 import fi.livi.digitraffic.meri.model.geojson.Properties;
 import io.swagger.annotations.ApiModelProperty;
 
-public class BridgeSluiceDisruptionProperties extends Properties {
+public class BridgeLockDisruptionProperties extends Properties {
 
-    @ApiModelProperty(value = "Id of bridge or sluice",
+    @ApiModelProperty(value = "Id of bridge or lock",
                       required = true)
-    public final long bridgeSluiceId;
+    public final long bridgeLockId;
 
-    @ApiModelProperty(value = "Type of bridge or sluice",
+    @ApiModelProperty(value = "Type of bridge or lock",
                       required = true)
-    public final long bridgeSluiceTypeId;
+    public final long bridgeLockTypeId;
 
     @ApiModelProperty(value = "Start date and time of disruption",
                       required = true)
@@ -47,9 +47,9 @@ public class BridgeSluiceDisruptionProperties extends Properties {
                       required = false)
     public final String additionalInformationEnglish;
 
-    public BridgeSluiceDisruptionProperties(
-        final long bridgeSluiceId,
-        final long bridgeSluiceTypeId,
+    public BridgeLockDisruptionProperties(
+        final long bridgeLockId,
+        final long bridgeLockTypeId,
         final ZonedDateTime startDate,
         final ZonedDateTime endDate,
         final String descriptionFinnish,
@@ -58,8 +58,8 @@ public class BridgeSluiceDisruptionProperties extends Properties {
         final String additionalInformationFinnish,
         final String additionalInformationSwedish,
         final String additionalInformationEnglish) {
-        this.bridgeSluiceId = bridgeSluiceId;
-        this.bridgeSluiceTypeId = bridgeSluiceTypeId;
+        this.bridgeLockId = bridgeLockId;
+        this.bridgeLockTypeId = bridgeLockTypeId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.descriptionFinnish = descriptionFinnish;

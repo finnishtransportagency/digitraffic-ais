@@ -1,4 +1,4 @@
-package fi.livi.digitraffic.meri.model.bridgesluice;
+package fi.livi.digitraffic.meri.model.bridgelock;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -11,5 +11,5 @@ import io.swagger.annotations.ApiModel;
                        "features",
                    })
 @ApiModel(description = "GeoJSON FeatureCollection object")
-public class BridgeSluiceDisruptionFeatureCollection extends FeatureCollection<BridgeSluiceDisruptionFeature> {
+public class BridgeLockDisruptionFeatureCollection extends FeatureCollection<BridgeLockDisruptionFeature> {
 }

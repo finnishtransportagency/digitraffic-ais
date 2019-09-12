@@ -1,4 +1,4 @@
-package fi.livi.digitraffic.meri.domain.bridgesluice;
+package fi.livi.digitraffic.meri.domain.bridgelock;
 
 import java.time.ZonedDateTime;
 
@@ -9,29 +9,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import fi.livi.digitraffic.meri.domain.Geometry;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import fi.livi.digitraffic.meri.dao.PolygonUserType;
-import fi.livi.digitraffic.meri.domain.Polygon;
+import fi.livi.digitraffic.meri.dao.GeometryUserType;
 
 @Entity
 @Access(AccessType.FIELD)
-@Table(name = "bridge_sluice_disruption")
-@TypeDef(name = "PolygonUserType",
-         typeClass = PolygonUserType.class)
-public class BridgeSluiceDisruption {
+@Table(name = "bridgelock_disruption")
+@TypeDef(name = "GeometryUserType",
+         typeClass = GeometryUserType.class)
+public class BridgeLockDisruption {
 
     @Id
-    private long id;
-
-    @Column(name = "bridgesluice_id",
+    @Column(name = "bridgelock_id",
             nullable = false)
-    private long bridgeSluiceId;
+    private long bridgeLockId;
 
-    @Column(name = "bridgesluice_type_id",
+    @Column(name = "bridgelock_type_id",
             nullable = false)
-    private long bridgeSluiceTypeId;
+    private long bridgeLockTypeId;
 
     @Column(name = "start_date",
             nullable = false)
@@ -42,8 +40,8 @@ public class BridgeSluiceDisruption {
     private ZonedDateTime endDate;
 
     @Column(nullable = false)
-    @Type(type = "PolygonUserType")
-    private Polygon polygon;
+    @Type(type = "GeometryUserType")
+    private Geometry geometry;
 
     @Column(name = "description_fi")
     private String descriptionFi;
@@ -63,24 +61,16 @@ public class BridgeSluiceDisruption {
     @Column(name = "additional_info_en")
     private String additionalInformationEn;
 
-    BridgeSluiceDisruption() {
+    BridgeLockDisruption() {
         // for Hibernate
     }
 
-    public long getId() {
-        return id;
+    public long getBridgeLockId() {
+        return bridgeLockId;
     }
 
-    public Polygon getPolygon() {
-        return polygon;
-    }
-
-    public long getBridgeSluiceId() {
-        return bridgeSluiceId;
-    }
-
-    public long getBridgeSluiceTypeId() {
-        return bridgeSluiceTypeId;
+    public long getBridgeLockTypeId() {
+        return bridgeLockTypeId;
     }
 
     public ZonedDateTime getStartDate() {
@@ -89,6 +79,10 @@ public class BridgeSluiceDisruption {
 
     public ZonedDateTime getEndDate() {
         return endDate;
+    }
+
+    public Geometry getGeometry() {
+        return geometry;
     }
 
     public String getDescriptionFi() {

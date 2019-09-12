@@ -1,6 +1,6 @@
 package fi.livi.digitraffic.meri.domain;
 
-public class Point {
+public class Point implements Geometry {
 
     public final double longitude;
     public final double latitude;

@@ -58,6 +58,7 @@ buildNumber.properties
 **/application-localhost.properties
 **/application-localhost-web.properties
 **/application-localhost-daemon.properties
+**/application-default.properties
 
 # SchemaSpyn generoimat schemat ja kirjastot
 /dbmarine/schemaspy/schema
