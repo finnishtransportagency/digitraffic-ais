@@ -80,8 +80,8 @@ public class GeometryUserType implements UserType {
         if (value == null) {
             st.setNull(index, Types.OTHER);
         } else {
-            //final Polygon polygon = (Polygon) value;
-            //    st.setObject(index, new PGpolygon(polygon.points.stream().map(p -> new PGpoint(p.longitude, p.latitude)).toArray(PGpoint[]::new)));
+            final fi.livi.digitraffic.meri.domain.Geometry geometry = (fi.livi.digitraffic.meri.domain.Geometry) value;
+            st.setObject(index, toPgGeometry(geometry));
         }
     }
 
@@ -98,6 +98,32 @@ public class GeometryUserType implements UserType {
     @Override
     public final Serializable disassemble(final Object value) throws HibernateException {
         return (Serializable) value;
+    }
+
+    private PGgeometry toPgGeometry(fi.livi.digitraffic.meri.domain.Geometry geometry) {
+        if (geometry instanceof fi.livi.digitraffic.meri.domain.Point) {
+            return new PGgeometry(toPostGisPoint((fi.livi.digitraffic.meri.domain.Point) geometry));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.MultiPoint) {
+            return new PGgeometry(new MultiPoint(((fi.livi.digitraffic.meri.domain.MultiPoint) geometry).points.stream().map(this::toPostGisPoint).toArray(Point[]::new)));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.LineString) {
+            return new PGgeometry(new LineString(((fi.livi.digitraffic.meri.domain.LineString) geometry).points.stream().map(this::toPostGisPoint).toArray(Point[]::new)));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.MultiLineString) {
+            return new PGgeometry(new MultiLineString(
+                ((fi.livi.digitraffic.meri.domain.MultiLineString) geometry).points.stream().map(points -> new LineString(points.stream().map(this::toPostGisPoint).toArray(Point[]::new))).toArray(LineString[]::new)));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.LinearRing) {
+            return new PGgeometry(new LinearRing(((fi.livi.digitraffic.meri.domain.LinearRing) geometry).points.stream().map(this::toPostGisPoint).toArray(Point[]::new)));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.Polygon) {
+            return new PGgeometry(new Polygon(
+                ((fi.livi.digitraffic.meri.domain.Polygon) geometry).points.stream().map(points -> new LinearRing(points.stream().map(this::toPostGisPoint).toArray(Point[]::new))).toArray(LinearRing[]::new)));
+        } else if (geometry instanceof fi.livi.digitraffic.meri.domain.MultiPolygon) {
+            return new PGgeometry(new MultiPolygon(
+                ((fi.livi.digitraffic.meri.domain.MultiPolygon) geometry).points.stream().map(points -> new Polygon(points.stream().map(p2 -> new LinearRing(p2.stream().map(this::toPostGisPoint).toArray(Point[]::new))).toArray(LinearRing[]::new))).toArray(Polygon[]::new)));
+        }
+        throw new IllegalArgumentException("Unknown geometry type");
+    }
+
+    private Point toPostGisPoint(fi.livi.digitraffic.meri.domain.Point point) {
+        return new Point(point.longitude, point.latitude);
     }
 
     private fi.livi.digitraffic.meri.domain.Point toPoint(Point point) {
@@ -138,4 +164,6 @@ public class GeometryUserType implements UserType {
         }
         throw new IllegalArgumentException("Unknown geometry type: " + geometry.getType());
     }
+
+
 }
