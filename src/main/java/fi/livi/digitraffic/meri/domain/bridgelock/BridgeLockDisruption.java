@@ -39,7 +39,7 @@ public class BridgeLockDisruption {
             nullable = false)
     private ZonedDateTime endDate;
 
-    @Column(nullable = false)
+    @Column(name = "geometry")
     @Type(type = "GeometryUserType")
     private Geometry geometry;
 
