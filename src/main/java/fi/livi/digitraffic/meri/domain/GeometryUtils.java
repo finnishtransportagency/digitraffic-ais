@@ -46,27 +46,3 @@ public class GeometryUtils {
         return List.of(point.longitude, point.latitude);
     }
 }
-/*
-if (geometry instanceof Point) {
-            return new fi.livi.digitraffic.meri.domain.Point(((Point) geometry).x, ((Point) geometry).y);
-        } else if (geometry instanceof MultiPoint) {
-            return new fi.livi.digitraffic.meri.domain.MultiPoint(
-                Arrays.stream(((MultiPoint) geometry).getPoints()).map(this::toPoint).collect(Collectors.toList()));
-        } else if (geometry instanceof LineString) {
-            return new fi.livi.digitraffic.meri.domain.LineString(
-                Arrays.stream(((LineString) geometry).getPoints()).map(this::toPoint).collect(Collectors.toList()));
-        } else if (geometry instanceof MultiLineString) {
-            return new fi.livi.digitraffic.meri.domain.MultiLineString(
-                Arrays.stream(((MultiLineString) geometry).getLines()).map(l ->
-                    Arrays.stream(l.getPoints()).map(this::toPoint).collect(Collectors.toList())).collect(Collectors.toList()));
-        } else if (geometry instanceof LinearRing) {
-            return new fi.livi.digitraffic.meri.domain.LinearRing(
-                Arrays.stream(((LinearRing) geometry).getPoints()).map(this::toPoint).collect(Collectors.toList()));
-        } else if (geometry instanceof Polygon) {
-            final Polygon poly = (Polygon) geometry;
-            final List<List<fi.livi.digitraffic.meri.domain.Point>> linearRings = getLinearRings((Polygon) geometry);
-            return new fi.livi.digitraffic.meri.domain.Polygon(linearRings);
-        } else if (geometry instanceof MultiPolygon) {
-            return new fi.livi.digitraffic.meri.domain.MultiPolygon(Arrays.stream(((MultiPolygon) geometry).getPolygons()).map(this::getLinearRings).collect(Collectors.toList()));
-        }
- */
