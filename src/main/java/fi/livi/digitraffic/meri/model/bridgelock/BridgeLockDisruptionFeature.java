@@ -6,8 +6,8 @@ import fi.livi.digitraffic.meri.model.geojson.Feature;
 import fi.livi.digitraffic.meri.model.geojson.Geometry;
 
 @JsonPropertyOrder({
-                       "geometry",
-                       "properties"
-                   })
+       "geometry",
+       "properties"
+})
 public class BridgeLockDisruptionFeature extends Feature<Geometry, BridgeLockDisruptionProperties> {
 }

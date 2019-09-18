@@ -6,10 +6,10 @@ import fi.livi.digitraffic.meri.model.geojson.FeatureCollection;
 import io.swagger.annotations.ApiModel;
 
 @JsonPropertyOrder({
-                       "type",
-                       "dateUpdatedTime",
-                       "features",
-                   })
+       "type",
+       "dateUpdatedTime",
+       "features"
+})
 @ApiModel(description = "GeoJSON FeatureCollection object")
 public class BridgeLockDisruptionFeatureCollection extends FeatureCollection<BridgeLockDisruptionFeature> {
 }

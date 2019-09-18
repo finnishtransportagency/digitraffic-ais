@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import fi.livi.digitraffic.meri.domain.EntityBase;
 import fi.livi.digitraffic.meri.domain.Geometry;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -20,7 +21,7 @@ import fi.livi.digitraffic.meri.dao.GeometryUserType;
 @Table(name = "bridgelock_disruption")
 @TypeDef(name = "GeometryUserType",
          typeClass = GeometryUserType.class)
-public class BridgeLockDisruption {
+public class BridgeLockDisruption implements EntityBase {
 
     @Id
     @Column(name = "bridgelock_id",
@@ -60,6 +61,32 @@ public class BridgeLockDisruption {
 
     @Column(name = "additional_info_en")
     private String additionalInformationEn;
+
+    public BridgeLockDisruption(
+        long bridgeLockId,
+        long bridgeLockTypeId,
+        ZonedDateTime startDate,
+        ZonedDateTime endDate,
+        Geometry geometry,
+        String descriptionFi,
+        String descriptionSv,
+        String descriptionEn,
+        String additionalInformationFi,
+        String additionalInformationSv,
+        String additionalInformationEn) {
+
+        this.bridgeLockId = bridgeLockId;
+        this.bridgeLockTypeId = bridgeLockTypeId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.geometry = geometry;
+        this.descriptionFi = descriptionFi;
+        this.descriptionSv = descriptionSv;
+        this.descriptionEn = descriptionEn;
+        this.additionalInformationFi = additionalInformationFi;
+        this.additionalInformationSv = additionalInformationSv;
+        this.additionalInformationEn = additionalInformationEn;
+    }
 
     BridgeLockDisruption() {
         // for Hibernate

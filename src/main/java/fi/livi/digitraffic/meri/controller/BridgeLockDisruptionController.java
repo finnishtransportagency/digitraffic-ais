@@ -31,12 +31,14 @@ import io.swagger.annotations.ApiOperation;
 @ConditionalOnWebApplication
 public class BridgeLockDisruptionController {
 
+    public static final String PATH = "/bridge-lock-disruptions";
+
     @Autowired
     private BridgeLockDisruptionService service;
 
     @ApiOperation("Return disruptions for bridges and locks")
     @RequestMapping(method = RequestMethod.GET,
-        path = "/bridge-lock-disruptions",
+        path = PATH,
         produces = {MEDIA_TYPE_APPLICATION_JSON_UTF8,
             MEDIA_TYPE_APPLICATION_GEO_JSON,
             MEDIA_TYPE_APPLICATION_VND_GEO_JSON})
