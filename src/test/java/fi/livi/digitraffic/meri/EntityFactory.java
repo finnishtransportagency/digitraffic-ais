@@ -10,7 +10,8 @@ import javax.persistence.EntityManager;
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
+import static fi.livi.digitraffic.meri.StreamUtils.randomRange;
 
 @Component
 public class EntityFactory {
@@ -78,11 +79,11 @@ public class EntityFactory {
     }
 
     private List<List<Point>> randomListsOfPoints() {
-        return IntStream.range(0, 1 + random.nextInt(10)).mapToObj(i -> randomPoints()).collect(Collectors.toList());
+        return randomRange(10).mapToObj(i -> randomPoints()).collect(Collectors.toList());
     }
 
     private List<Point> randomPoints() {
-        return IntStream.range(0, 10 + random.nextInt(10)).mapToObj(i -> randomPoint()).collect(Collectors.toList());
+        return randomRange(10).mapToObj(i -> randomPoint()).collect(Collectors.toList());
     }
 
     private Point randomPoint() {

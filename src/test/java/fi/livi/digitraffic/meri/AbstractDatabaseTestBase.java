@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AbstractDatabaseTestBase extends AbstractTestBase {
+public abstract class AbstractDatabaseTestBase extends AbstractTestBase {
 
     @Autowired
     protected EntityFactory ef;
