@@ -12,3 +12,5 @@ CREATE TABLE BRIDGELOCK_DISRUPTION(
     additional_info_en TEXT,
     PRIMARY KEY (bridgelock_id, bridgelock_type_id, start_date, end_date)
 );
+
+CREATE UNIQUE INDEX bridgelock_primary_key ON BRIDGELOCK_DISRUPTION (bridgelock_id, bridgelock_type_id, start_date, end_date);
