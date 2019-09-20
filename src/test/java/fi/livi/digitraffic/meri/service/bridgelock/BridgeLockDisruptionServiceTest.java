@@ -1,7 +1,7 @@
 package fi.livi.digitraffic.meri.service.bridgelock;
 
 import fi.livi.digitraffic.meri.AbstractDatabaseTestBase;
-import fi.livi.digitraffic.meri.StreamUtils;
+import fi.livi.digitraffic.meri.TestStreamUtils;
 import fi.livi.digitraffic.meri.domain.bridgelock.BridgeLockDisruption;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ public class BridgeLockDisruptionServiceTest extends AbstractDatabaseTestBase {
 
     @Test
     public void findAll() {
-        List<BridgeLockDisruption> disruptions = StreamUtils.randomRange(10)
-            .mapToObj(i -> ef.newBridgeLockDisruption()).collect(Collectors.toList());
-        ef.persistAll();
+        List<BridgeLockDisruption> disruptions = TestStreamUtils.randomRange(10)
+            .mapToObj(i -> om.newBridgeLockDisruption()).collect(Collectors.toList());
+        om.persistAll();
 
         assertSize(bridgeLockDisruptionService.findAll(), disruptions.size());
     }

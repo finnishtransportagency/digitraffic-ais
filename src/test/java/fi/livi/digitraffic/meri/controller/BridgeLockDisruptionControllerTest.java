@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static fi.livi.digitraffic.meri.StreamUtils.randomRange;
+import static fi.livi.digitraffic.meri.TestStreamUtils.randomRange;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -29,8 +29,8 @@ public class BridgeLockDisruptionControllerTest extends AbstractDatabaseTestBase
 
     private List<BridgeLockDisruption> createSomeDisruptions() {
         final List<BridgeLockDisruption> disruptions = randomRange(10)
-            .mapToObj(i -> ef.newBridgeLockDisruption()).collect(Collectors.toList());
-        ef.persistAll();
+            .mapToObj(i -> om.newBridgeLockDisruption()).collect(Collectors.toList());
+        om.persistAll();
         return disruptions;
     }
 }

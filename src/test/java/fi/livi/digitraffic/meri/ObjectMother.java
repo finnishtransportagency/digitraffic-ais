@@ -11,10 +11,10 @@ import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static fi.livi.digitraffic.meri.StreamUtils.randomRange;
+import static fi.livi.digitraffic.meri.TestStreamUtils.randomRange;
 
 @Component
-public class EntityFactory {
+public class ObjectMother {
 
     private static final Random random = new Random(System.nanoTime());
 

@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 import static fi.livi.digitraffic.meri.AssertionUtils.assertPositive;
 
-public class StreamUtils {
+public class TestStreamUtils {
 
     private static final Random random = new Random(System.nanoTime());
 
