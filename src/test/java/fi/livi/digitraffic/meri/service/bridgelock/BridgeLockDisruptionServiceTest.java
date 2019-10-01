@@ -19,8 +19,8 @@ public class BridgeLockDisruptionServiceTest extends AbstractDatabaseTestBase {
     @Test
     public void findAll() {
         List<BridgeLockDisruption> disruptions = TestStreamUtils.randomRange(10)
-            .mapToObj(i -> om.newBridgeLockDisruption()).collect(Collectors.toList());
-        om.persistAll();
+            .mapToObj(i -> objectMother.newBridgeLockDisruption()).collect(Collectors.toList());
+        objectMother.persistAll();
 
         assertSize(bridgeLockDisruptionService.findAll(), disruptions.size());
     }

@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractDatabaseTestBase extends AbstractTestBase {
 
     @Autowired
-    protected ObjectMother om;
+    protected ObjectMother objectMother;
 
     @Before
     public void before() {
-        om.truncateDatabase();
+        objectMother.truncateDatabase();
     }
 
     @After
     public void after() {
-        om.truncateDatabase();
+        objectMother.truncateDatabase();
     }
 
 }

@@ -29,8 +29,8 @@ public class BridgeLockDisruptionControllerTest extends AbstractDatabaseTestBase
 
     private List<BridgeLockDisruption> createSomeDisruptions() {
         final List<BridgeLockDisruption> disruptions = randomRange(10)
-            .mapToObj(i -> om.newBridgeLockDisruption()).collect(Collectors.toList());
-        om.persistAll();
+            .mapToObj(i -> objectMother.newBridgeLockDisruption()).collect(Collectors.toList());
+        objectMother.persistAll();
         return disruptions;
     }
 }
